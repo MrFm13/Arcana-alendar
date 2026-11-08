@@ -1,0 +1,7 @@
+services:
+  arcana:
+    build: .
+    image: arcana-calendar:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped

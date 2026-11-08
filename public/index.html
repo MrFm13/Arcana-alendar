@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123bbd">
+  <title>КАЛЕНДАРЬ АРКАНА — ежедневник</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./motion.css">
+</head>
+
+<body>
+  <header>
+  <div class="logo">КАЛЕНДАРЬ <span>АРКАНА</span>
+  </div>
+  <div class="header-actions" role="group" aria-label="Друзья и профиль"><button data-tab="friends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0112 0v3M16 5a3 3 0 010 6m2 3a5 5 0 013 4v3"/></svg><span>Друзья</span></button><button data-tab="stats" aria-label="Профиль и моя статистика"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10m8 10V4m8 16v-7M2 21h20"/></svg><span>Профиль</span></button></div>
+  </header>
+  <div class="shell">
+  <nav aria-label="Разделы">
+  <button data-tab="today"><span>Сегодня</span></button>
+  <button data-tab="calendar"><span>Календарь</span></button>
+  <button data-tab="arcana"><span>Арканы</span></button>
+  </nav>
+  <main>
+  <div id="view">
+  </div>
+  <div id="notice" role="status" aria-live="polite"></div>
+  </main>
+  </div>
+  <input id="backupfile" type="file" accept=".json,application/json" hidden>
+  <dialog id="editor">
+  <form id="form">
+  <h2>НОВОЕ ЗАДАНИЕ</h2>
+  <label>Что хотите сделать?<input id="title" required maxlength="160" placeholder="Например, нарисовать иллюстрацию">
+  </label>
+  <div class="formrow">
+  <label>Дата<input id="date" type="date" required>
+  </label>
+  <label>Срок до<input id="time" type="time" value="18:00" required>
+  </label>
+  </div>
+  <label>Сложность<select id="points">
+  <option value="15">Лёгкое · +15 очков</option>
+  <option value="30" selected>Обычное · +30 очков</option>
+  <option value="50">Большое · +50 очков</option>
+  </select>
+  </label>
+  <label>Аркан<select id="arcselect">
+  </select>
+  </label>
+  <div id="prediction" class="hint">
+  </div>
+  <div class="actions">
+  <button type="button" class="btn light" id="cancel">Отмена</button>
+  <button class="btn" type="submit">Добавить</button>
+  </div>
+  </form>
+  </dialog>
+  <dialog id="suggesteditor"><form id="suggestform">
+  <h2>ПРЕДЛОЖИТЬ ЗАДАНИЕ</h2><p id="suggestrecipient"></p>
+  <label>Задание<input id="suggesttitle" required maxlength="160" placeholder="Например, нарисовать открытку"></label>
+  <label>Дата<input id="suggestdate" type="date" required></label>
+  <p class="hint">Предложение сохраняется только в этой демоверсии. Друг не получит уведомление.</p>
+  <div class="actions"><button class="btn light" type="button" id="cancelsuggest">Отмена</button><button class="btn" type="submit">Предложить</button></div>
+  </form></dialog>
+  <dialog id="profileeditor"><form id="profileform">
+    <h2>МОЙ ПРОФИЛЬ</h2>
+    <label>Имя<input id="profilename" required maxlength="40" autocomplete="nickname"></label>
+    <label>О себе<input id="profileabout" maxlength="160" placeholder="Мои увлечения и цели"></label>
+    <div class="actions"><button type="button" class="btn light" id="cancelprofile">Отмена</button><button type="submit" class="btn">Сохранить</button></div>
+  </form></dialog><script src="./app.js" defer></script>
+</body>
+</html>
